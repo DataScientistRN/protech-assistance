@@ -1,4 +1,4 @@
-/* Fills the page from content.js and handles the language buttons.
+/* Fills the page from content.js and handles the language picker.
    Nothing here needs editing to change the website's text. */
 (function () {
   var S = window.SITE;
@@ -73,8 +73,13 @@
       }).join("");
     });
 
-    $all(".lang-btn").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    var current = languages.filter(function (l) { return l.code === lang; })[0];
+    var toggle = document.querySelector(".lang-toggle");
+    toggle.querySelector(".lang-code").textContent = current.label;
+    toggle.setAttribute("aria-label", current.name);
+    $all(".lang-item").forEach(function (b) {
+      if (b.dataset.lang === lang) b.setAttribute("aria-current", "true");
+      else b.removeAttribute("aria-current");
     });
   }
 
@@ -83,14 +88,44 @@
     render(lang);
   }
 
+  // Language picker: a globe icon beside a button that opens a small menu of languages.
+  var GLOBE = '<svg class="lang-globe" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.4 3.8 5.4 3.8 9s-1.3 6.6-3.8 9c-2.5-2.4-3.8-5.4-3.8-9S9.5 5.4 12 3z"/></svg>';
+  var CARET = '<svg class="lang-caret" aria-hidden="true" viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5l4 4 4-4"/></svg>';
+
   var box = document.getElementById("lang-switch");
-  box.innerHTML = languages.map(function (l) {
-    return '<button type="button" class="lang-btn" data-lang="' + l.code + '" lang="' + l.code +
-      '" title="' + esc(l.name) + '" aria-label="' + esc(l.name) + '">' + esc(l.label) + "</button>";
-  }).join("");
-  box.addEventListener("click", function (e) {
-    var b = e.target.closest(".lang-btn");
-    if (b) setLang(b.dataset.lang);
+  box.innerHTML = GLOBE +
+    '<div class="lang-picker">' +
+      '<button type="button" class="lang-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="lang-menu">' +
+        '<span class="lang-code"></span>' + CARET + "</button>" +
+      '<div class="lang-menu" id="lang-menu" hidden>' +
+        languages.map(function (l) {
+          return '<button type="button" class="lang-item" data-lang="' + l.code + '" lang="' + l.code + '">' +
+            esc(l.name) + "</button>";
+        }).join("") +
+      "</div>" +
+    "</div>";
+
+  var toggle = box.querySelector(".lang-toggle");
+  var menu = box.querySelector(".lang-menu");
+
+  function setOpen(open, refocus) {
+    menu.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    if (!open && refocus) toggle.focus();
+  }
+
+  toggle.addEventListener("click", function () { setOpen(menu.hidden); });
+  menu.addEventListener("click", function (e) {
+    var b = e.target.closest(".lang-item");
+    if (!b) return;
+    setLang(b.dataset.lang);
+    setOpen(false, true);
+  });
+  document.addEventListener("click", function (e) {
+    if (!box.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !menu.hidden) setOpen(false, true);
   });
 
   render(initialLang());
