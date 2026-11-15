@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Title and description below are the English defaults; content.js replaces them per language. -->
+  <title>Protech Assistance | Mobile Truck Repair in Boise, ID</title>
+  <meta name="description" content="Mobile truck repair technician serving Boise, Idaho. We come to you: diagnostics, brakes, electrical, air systems and roadside breakdown repair.">
+  <meta name="theme-color" content="#0d0d0d">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&family=Roboto+Condensed:wght@600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- All visible text comes from content.js. Edit that file, not this one. -->
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">P</span>
+        <span class="brand-name">Protech <span>Assistance</span></span>
+      </a>
+      <nav class="nav">
+        <a href="#services" data-t="navServices"></a>
+        <a href="#area" data-t="navArea"></a>
+        <a href="#contact" data-t="navContact"></a>
+      </nav>
+      <div class="lang-switch" id="lang-switch"></div>
+      <a class="btn btn-call btn-header" data-tel href="tel:">
+        <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+        <span data-t="callNow"></span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow" data-t="eyebrow"></p>
+        <h1><span data-t="headline1"></span> <em data-t="headline2"></em></h1>
+        <p class="lead" data-t="lead"></p>
+        <div class="hero-actions">
+          <a class="btn btn-call btn-large" data-tel href="tel:">
+            <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+            <span data-t="callButton"></span>
+          </a>
+          <a class="btn btn-ghost btn-large" href="#services" data-t="seeServices"></a>
+        </div>
+        <ul class="badges" data-list="badges"></ul>
+      </div>
+    </section>
+
+    <section id="services" class="section">
+      <div class="container">
+        <p class="eyebrow dark" data-t="servicesEyebrow"></p>
+        <h2 data-t="servicesTitle"></h2>
+        <p class="section-intro" data-t="servicesIntro"></p>
+        <div class="cards" data-list="services"></div>
+      </div>
+    </section>
+
+    <section id="area" class="section section-dark">
+      <div class="container area-grid">
+        <div>
+          <p class="eyebrow" data-t="areaEyebrow"></p>
+          <h2 data-t="areaTitle"></h2>
+          <p data-t-rich="areaText1"></p>
+          <p data-t-rich="areaText2"></p>
+        </div>
+        <ul class="area-list" data-list="towns"></ul>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container cta-inner">
+        <h2 data-t="ctaTitle"></h2>
+        <p data-t="ctaText"></p>
+        <a class="btn btn-light btn-large" data-tel href="tel:">
+          <svg aria-hidden="true" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+          <span data-t="callButton"></span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p data-t="footer"></p>
+    </div>
+  </footer>
+
+  <!-- Sticky call bar, shown on mobile only -->
+  <a class="call-bar" data-tel href="tel:">
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    <span data-t="tapToCall"></span>
+  </a>
+
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
