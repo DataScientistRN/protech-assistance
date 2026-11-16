@@ -1,0 +1,37 @@
+name: Build static HTML
+
+# When content.js (or the page) changes, bake the English text into index.html
+# so search engines can read it without running JavaScript. If the result differs,
+# the updated index.html is committed back automatically.
+on:
+  push:
+    branches: [main]
+    paths:
+      - content.js
+      - index.html
+      - build.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build index.html from content.js
+        run: python3 build.py
+
+      - name: Commit the result if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "Nothing to commit."
+          else
+            git commit -m "Build: update index.html from content.js"
+            git push
+          fi
