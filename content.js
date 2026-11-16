@@ -18,8 +18,8 @@ window.SITE = {
 
   // ---- Phone number (used everywhere on the site) ------------------------
   phone: {
-    display: "(208) 555-0123",   // what visitors see
-    tel: "+12085550123"          // what the phone dials: + country code + number, no spaces
+    display: "(208) 810-1910",   // what visitors see
+    tel: "+12088101910"          // what the phone dials: + country code + number, no spaces
   },
 
   // ---- Languages (order here = order of the buttons in the header) -------
